@@ -17,11 +17,18 @@ Metadata:
         x: 236
         'y': 151
       z: 0
+
+Parameters:
+
+  LambdaName:
+    Description: "Name for this function"
+    Type: "String"
+    
 Resources:
   demofunction:
     Type: 'AWS::Lambda::Function'
     Properties:
-      FunctionName: mydemofunction
+      FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
       Code:
         ZipFile: |
