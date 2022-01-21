@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
+Transform: 'AWS::Serverless-2016-10-31'
 Metadata:
   'AWS::CloudFormation::Designer':
     e261f7d4-8c04-4c51-bb9f-9f0def3ba233:
