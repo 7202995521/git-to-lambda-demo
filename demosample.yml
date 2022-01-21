@@ -30,10 +30,7 @@ Resources:
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      Code:
-        ZipFile: |
-          def lambda_handler(event, context):
-            pass
+      Code: .
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
