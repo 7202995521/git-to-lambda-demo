@@ -1,5 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
+AWSTemplateFormatVersion: 2010-09-09
 Metadata:
   'AWS::CloudFormation::Designer':
     e261f7d4-8c04-4c51-bb9f-9f0def3ba233:
@@ -27,11 +26,15 @@ Parameters:
     
 Resources:
   demofunction:
-    Type: 'AWS::Serverless::Function'
+    Type: 'AWS::Lambda::Function'
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      CodeUri: . 
+      Code:
+        ZipFile: |
+          def lambda_handler(event, context):
+            message = 'Hello Lambda World!'
+            return message
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
@@ -63,6 +66,26 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
+  demofunctionnew:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: mynewdemofunction
+      Handler: index.lambda_handler
+      Code:
+        ZipFile: |
+          def lambda_handler(event, context):
+            message = 'Hello Lambda World!'
+            return message
+      Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
+      Runtime: python3.9
+      Timeout: 120
+      Layers:
+        - !Ref libs
+    DependsOn:
+      - newdemotable
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e261f7d4-8c04-4c51-bb9f-9f0def3ba233
   newdemotable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
@@ -83,3 +106,13 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
+  libs:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: python-requests-lib
+      Description: Dependencies for requests lib module for python.
+      Content:
+        S3Bucket: lambdalayernew
+        S3Key: python.zip
+      CompatibleRuntimes:
+        - python3.9  
