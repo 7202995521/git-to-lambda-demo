@@ -1,5 +1,4 @@
 AWSTemplateFormatVersion: 2010-09-09
-Transform: 'AWS::Serverless-2016-10-31'
 Metadata:
   'AWS::CloudFormation::Designer':
     e261f7d4-8c04-4c51-bb9f-9f0def3ba233:
@@ -27,11 +26,15 @@ Parameters:
     
 Resources:
   demofunction:
-    Type: 'AWS::Serverless::Function'
+    Type: 'AWS::Lambda::Function'
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      CodeUri: ./LambdaCode
+      Code:
+        ZipFile: |
+          def lambda_handler(event, context):
+            message = 'Hello Lambda World!'
+            return message
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
