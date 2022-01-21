@@ -30,11 +30,7 @@ Resources:
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      Code:
-        ZipFile: |
-          def lambda_handler(event, context):
-            message = 'Hello Lambda World!'
-            return message
+      CodeUrl: ./LambdaCode
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
