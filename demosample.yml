@@ -29,8 +29,7 @@ Resources:
     Type: 'AWS::Lambda::Function'
     Properties:
       FunctionName: !Ref LambdaName
-      Handler: index.lambda_handler
-      Code: ./LambdaCode
+      Handler: /LambdaCode/index.lambda_handler
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
