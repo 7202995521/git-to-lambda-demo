@@ -33,8 +33,7 @@ Resources:
       Code:
         ZipFile: |
           def lambda_handler(event, context):
-            message = 'Hello Lambda World!'
-            return message
+            pass
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
