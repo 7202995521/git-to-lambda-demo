@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: 2010-09-09
+AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Metadata:
   'AWS::CloudFormation::Designer':
@@ -64,7 +64,7 @@ Resources:
       'AWS::CloudFormation::Designer':
         id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
   demofunctionnew:
-    Type: 'AWS::Serverless::Function'
+    Type: 'AWS::Lambda::Function'
     Properties:
       FunctionName: mynewdemofunction
       Handler: index.lambda_handler
@@ -104,7 +104,7 @@ Resources:
       'AWS::CloudFormation::Designer':
         id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
   libs:
-    Type: AWS::Serverless::LayerVersion
+    Type: AWS::Lambda::LayerVersion
     Properties:
       LayerName: python-requests-lib
       Description: Dependencies for requests lib module for python.
