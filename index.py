@@ -29,7 +29,7 @@ def lambda_handler(event, context):
           'age': 16
       }
     )
-    print("Item succesfully added in database")
+    print("Item succesfully added in database Have yoe look or not")
     
   elif event["id"] == "2":
     
