@@ -129,4 +129,4 @@ def lambda_handler(event, context):
           'age': 20
         }
       )
-    print("Items added succesfully using batch")
+    print("Items added succesfully using batch let's have a look")
