@@ -14,7 +14,10 @@ Resources:
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      CodeUri: .
+      InlineCode: |
+        def lambda_handler(event, context):
+          message = 'Hello World!'
+          return message
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Timeout: 120
