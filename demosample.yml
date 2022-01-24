@@ -30,8 +30,6 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: !Ref LambdaName
-      PackageType: Zip
-      CodeUri: .
       Handler: index.lambda_handler
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
