@@ -31,7 +31,7 @@ Resources:
     Properties:
       FunctionName: !Ref LambdaName
       PackageType: Zip
-      CodeUri: .
+      CodeUri: https://github.com/7202995521/git-to-lambda-demo/blob/256e3ac4577de821cbdbb28c3564be3d3907728c/index.py
       Handler: index.lambda_handler
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
