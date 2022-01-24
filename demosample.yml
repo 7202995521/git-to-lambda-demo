@@ -1,3 +1,4 @@
+
 AWSTemplateFormatVersion: 2010-09-09
 Transform: 'AWS::Serverless-2016-10-31'
 Metadata:
@@ -31,7 +32,7 @@ Resources:
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
-      CodeUri: index.py
+      CodeUri: ./
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Timeout: 120
