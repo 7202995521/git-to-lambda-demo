@@ -1,24 +1,6 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 Transform: 'AWS::Serverless-2016-10-31'
-Metadata:
-  'AWS::CloudFormation::Designer':
-    e261f7d4-8c04-4c51-bb9f-9f0def3ba233:
-      size:
-        width: 60
-        height: 60
-      position:
-        x: 403
-        'y': 157
-      z: 0
-    48d2f62d-ec35-4808-8cba-f7d7282258ab:
-      size:
-        width: 60
-        height: 60
-      position:
-        x: 236
-        'y': 151
-      z: 0
 
 Parameters:
 
