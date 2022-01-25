@@ -1,6 +1,6 @@
 
 AWSTemplateFormatVersion: 2010-09-09
-Transform: 'AWS::Serverless-2016-10-31'
+Transform: AWS::Serverless-2016-10-31
 
 Parameters:
 
@@ -10,7 +10,7 @@ Parameters:
     
 Resources:
   demofunction:
-    Type: 'AWS::Serverless::Function'
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
