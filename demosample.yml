@@ -1,12 +1,18 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+
+  LambdaName:
+    Description: "Name for this function"
+    Type: "String"
     
 Resources:
   demofunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: mydemofunction
+      FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
       CodeUri: ./index.py
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
