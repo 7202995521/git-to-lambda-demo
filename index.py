@@ -45,7 +45,7 @@ def lambda_handler(event, context):
     if 'Item' in data:
         print(json.dumps(data['Item'],cls=DecimalEncoder,indent = 4))
     else:
-        print("Requested data is not found in database")
+        print("Requested data is not found in database also here")
   
   elif event["id"] == "3":
     
