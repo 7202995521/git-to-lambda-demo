@@ -23,10 +23,8 @@ def lambda_handler(event, context):
     
     data = table.put_item(
       Item={
-          'student_name': 'Student6',
-          'subject_title': 'English(F.L)',
-          'grade': 'B',
-          'age': 16
+          'student_name': 'Student3',
+          'subject_title': 'Science'
       }
     )
     print("Item succesfully added in database")
@@ -37,9 +35,9 @@ def lambda_handler(event, context):
     
     data = table.get_item(
             Key={
-                'student_name' : 'Student1',
+                'student_name' : 'Student2',
                 'subject_title': 'Maths'
-            }
+                }
         )
                 
     if 'Item' in data:
@@ -114,9 +112,7 @@ def lambda_handler(event, context):
         
         Item = {
           'student_name': 'Student7',
-          'subject_title': 'Hindi',
-          'grade': 'F',
-          'age': 14
+          'subject_title': 'Hindi'
         }
       )
       
@@ -124,9 +120,7 @@ def lambda_handler(event, context):
         
         Item = {
           'student_name': 'Student8',
-          'subject_title': 'Urdu',
-          'grade': 'F',
-          'age': 20
+          'subject_title': 'Urdu'
         }
       )
     print("Items added succesfully using batch let's have a look")
