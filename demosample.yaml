@@ -19,7 +19,7 @@ Resources:
       Environment:
         Variables:
           TableName: !Ref demotable
-      Timeout: 120
+      Timeout: 140
     DependsOn:
       - demotable
   
