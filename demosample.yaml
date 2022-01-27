@@ -31,8 +31,8 @@ Resources:
         Name: student_name
         Type: String
       ProvisionedThroughput: 
-         ReadCapacityUnits: 5 
-         WriteCapacityUnits: 5
+        ReadCapacityUnits: 5 
+        WriteCapacityUnits: 5
       Tags:
         Department: Engineering
         AppType: Serverless
