@@ -30,6 +30,9 @@ Resources:
       PrimaryKey:
         Name: student_name
         Type: String
+      ProvisionedThroughput: 
+         ReadCapacityUnits: 5 
+         WriteCapacityUnits: 5 
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
