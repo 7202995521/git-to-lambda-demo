@@ -17,29 +17,5 @@ Resources:
       CodeUri: .
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
-      Environment:
-        Variables:
-          TableName: !Ref demotable
       Timeout: 120
-      Policies:
-       - DynamoDBCrudPolicy:
-          TableName: !Ref demotable
-    DependsOn:
-      - demotable
   
-  
-  demotable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: myfirstdemotable
-      AttributeDefinitions:
-        - AttributeName: student_name
-          AttributeType: S
-        - AttributeName: subject_title
-          AttributeType: S
-      KeySchema:
-        - AttributeName: student_name
-          KeyType: HASH
-        - AttributeName: subject_title
-          KeyType: "RANGE"
-      BillingMode: PAY_PER_REQUEST
