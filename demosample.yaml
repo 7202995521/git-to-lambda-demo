@@ -15,11 +15,12 @@ Resources:
       FunctionName: !Ref LambdaName
       Handler: index.lambda_handler
       CodeUri: .
+      Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
       Environment:
         Variables:
           TableName: !Ref demotable
-      Timeout: 140
+      Timeout: 120
     DependsOn:
       - demotable
   
