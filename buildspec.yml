@@ -1,0 +1,10 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - aws cloudformation package --template-file demosample.yaml --s3-bucket newlambda-trigger-bucket --output-template-file output-template.yaml
+artifacts:
+  type: zip
+  files:
+    - demosample.yaml
+    - output-template.yaml
