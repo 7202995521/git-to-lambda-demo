@@ -24,19 +24,12 @@ Resources:
     DependsOn:
       - demotable
   demotable:
-    Type: 'AWS::DynamoDB::Table'
+    Type: AWS::Serverless::SimpleTable
     Properties:
       TableName: myfirstdemotable
-      AttributeDefinitions:
-        - AttributeName: "student_name"
-          AttributeType: "S"
-        - AttributeName: "subject_title"
-          AttributeType: "S"
-      KeySchema:
-        - AttributeName: "student_name"
-          KeyType: "HASH"
-        - AttributeName: "subject_title"
-          KeyType: "RANGE"
-      ProvisionedThroughput:
-        ReadCapacityUnits: "5"
-        WriteCapacityUnits: "5"
+      PrimaryKey:
+        Name: student_name
+        Type: String
+      Tags:
+        Department: Engineering
+        AppType: Serverless
