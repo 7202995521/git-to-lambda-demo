@@ -21,9 +21,6 @@ Resources:
         Variables:
           TableName: !Ref demotable
       Timeout: 120
-      Policies:
-       - DynamoDBCrudPolicy:
-          TableName: !Ref demotable
     DependsOn:
       - demotable
   
