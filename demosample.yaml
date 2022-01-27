@@ -17,4 +17,22 @@ Resources:
       CodeUri: .
       Role: 'arn:aws:iam::148034182407:role/dboperationsrole'
       Runtime: python3.9
+      Environment:
+        Variables:
+          TableName: !Ref demotable
       Timeout: 120
+    DependsOn:
+      - demotable
+  demotable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: myfirstdemotable
+      PrimaryKey:
+        Name: student_name
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 48d2f62d-ec35-4808-8cba-f7d7282258ab
