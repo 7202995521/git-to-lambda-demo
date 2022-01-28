@@ -7,6 +7,8 @@ from decimal import Decimal
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(os.environ['TableName'])
 
+client = boto3.client('iot-data', region_name='us-east-1')
+
 # create a class DecimalEncoder that casts Decimals into floats and then displays them in desired format.
 
 class DecimalEncoder(json.JSONEncoder):
@@ -23,8 +25,8 @@ def lambda_handler(event, context):
     
     data = table.put_item(
       Item={
-          'student_name': 'Student3',
-          'subject_title': 'Science'
+          'student_name': 'Student9',
+          'subject_title': 'Scun55hhvvhh'
       }
     )
     print("Item succesfully added in database")
@@ -124,3 +126,16 @@ def lambda_handler(event, context):
         }
       )
     print("Items added succesfully using batch let's have a look")
+    
+  elif event["id"] == "8":
+    
+    # update a device shadow
+    
+      data = {"state" : { "desired" : { "temp_rate" : 80 }}}
+      mypayload = json.dumps(data)
+      response = client.update_thing_shadow(
+          thingName = 'demodevice',
+          shadowName='Classic Shadow',
+          payload = mypayload
+      )
+    print("Shadow update succesfully")
