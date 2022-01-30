@@ -132,10 +132,30 @@ def lambda_handler(event, context):
     # update a device shadow
     
       data = {"state" : { "desired" : { "temp_rate" : 80 }}}
-      mypayload = json.dumps(data)
+      mypayload = json.dumps(data, indent = 2).encode('utf-8')
       response = client.update_thing_shadow(
           thingName = 'demodevice',
           shadowName='Classic Shadow',
           payload = mypayload
       )
-    print("Shadow update succesfully")
+      print("Shadow update succesfully")
+
+  elif event["id"] == "9":
+    
+    # get a thing device shadow
+    
+      response = client.get_thing_shadow(
+          thingName = 'demodevice',
+          shadowName='Classic Shadow'
+      )
+      print(response)
+
+   elif event["id"] == "10":
+    
+    # delete thing device shadow
+    
+      response = client.delete_thing_shadow(
+          thingName = 'demodevice',
+          shadowName='Classic Shadow'
+      )
+      print("Shadow update succesfully")
