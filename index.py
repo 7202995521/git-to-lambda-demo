@@ -150,7 +150,7 @@ def lambda_handler(event, context):
       )
       print(response)
 
-   elif event["id"] == "10":
+  elif event["id"] == "10":
     
     # delete thing device shadow
     
