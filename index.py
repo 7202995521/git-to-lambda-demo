@@ -131,11 +131,11 @@ def lambda_handler(event, context):
     
     # update a device shadow
     
-      data = {"state" : { "desired" : { "temp_rate" : 80 }}}
+      data = {"state" : { "desired" : { "welcome": "aws-iot-5" }}}
       mypayload = json.dumps(data, indent = 2).encode('utf-8')
       response = client.update_thing_shadow(
           thingName = 'demodevice',
-          shadowName='Classic Shadow',
+          shadowName='deviceshodow2',
           payload = mypayload
       )
       print("Shadow update succesfully")
@@ -146,9 +146,11 @@ def lambda_handler(event, context):
     
       response = client.get_thing_shadow(
           thingName = 'demodevice',
-          shadowName='Classic Shadow'
+          shadowName='deviceshodow2'
       )
-      print(response)
+      streamingbody = response["payload"]
+      jsondata = json.loads(streamingBody.read())
+      print(jsondata)
 
   elif event["id"] == "10":
     
@@ -156,6 +158,6 @@ def lambda_handler(event, context):
     
       response = client.delete_thing_shadow(
           thingName = 'demodevice',
-          shadowName='Classic Shadow'
+          shadowName='deviceshodow2'
       )
       print("Shadow update succesfully")
