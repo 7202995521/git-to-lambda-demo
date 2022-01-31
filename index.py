@@ -149,8 +149,9 @@ def lambda_handler(event, context):
           shadowName='deviceshodow2'
       )
       streamingbody = response["payload"]
-      jsondata = json.loads(streamingBody.read())
+      jsondata = json.loads(streamingbody.read())
       print(jsondata)
+      print(jsondata['state'])
 
   elif event["id"] == "10":
     
@@ -158,6 +159,6 @@ def lambda_handler(event, context):
     
       response = client.delete_thing_shadow(
           thingName = 'demodevice',
-          shadowName='deviceshodow2'
+          shadowName='temp-sensor-1'
       )
-      print("Shadow update succesfully")
+      print("Shadow delete succesfully")
