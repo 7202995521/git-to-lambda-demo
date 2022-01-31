@@ -41,19 +41,70 @@ Resources:
           KeyType: "RANGE"
       BillingMode: PAY_PER_REQUEST
 
+  AlarmTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+      - Protocol: email
+        Endpoint: ami.thakar@volansys.com
+
   lambdacfalarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
       AlarmName: lambdaerrCWalarm
       ActionsEnabled: true
       AlarmActions:
-        - arn:aws:sns:us-east-1:148034182407:CWtopic
+        - !Ref AlarmTopic
       MetricName: Errors
       Namespace: AWS/Lambda
       Statistic: Sum
       Dimensions:
         - Name: FunctionName
           Value: mydemofunction
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: missing
+    
+  dbcfwritealarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: dbwriteoperationCWalarm
+      ActionsEnabled: true
+      AlarmActions:
+        - !Ref AlarmTopic
+      MetricName: SuccessfulRequestLatency
+      Namespace: AWS/DynamoDB
+      Statistic: Sum
+      Dimensions:
+        - Name: TableName
+          Value: myfirstdemotable
+        - Name: Operation
+          Value: PutItem
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: missing
+    
+  dbcfreadalarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: dbreadoperationCWalarm
+      ActionsEnabled: true
+      AlarmActions:
+        - !Ref AlarmTopic
+      MetricName: SuccessfulRequestLatency
+      Namespace: AWS/DynamoDB
+      Statistic: Sum
+      Dimensions:
+        - Name: TableName
+          Value: myfirstdemotable
+        - Name: Operation
+          Value: GetItem
       Period: 300
       EvaluationPeriods: 1
       DatapointsToAlarm: 1
