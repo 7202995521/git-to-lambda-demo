@@ -161,4 +161,4 @@ def lambda_handler(event, context):
           thingName = 'demodevice',
           shadowName='temp-sensor-1'
       )
-      print("Shadow delete succesfully")
+      print("Named Shadow deleted  succesfully !!!")
