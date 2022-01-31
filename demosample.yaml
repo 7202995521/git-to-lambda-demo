@@ -40,3 +40,23 @@ Resources:
         - AttributeName: subject_title
           KeyType: "RANGE"
       BillingMode: PAY_PER_REQUEST
+
+  lambdacfalarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lambdaerrCWalarm
+      ActionsEnabled: true
+      AlarmActions:
+        - arn:aws:sns:us-east-1:148034182407:CWtopic
+      MetricName: Errors
+      Namespace: AWS/Lambda
+      Statistic: Sum
+      Dimensions:
+        - Name: FunctionName
+          Value: mydemofunction
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: missing
